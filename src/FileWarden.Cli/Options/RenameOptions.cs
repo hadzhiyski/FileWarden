@@ -25,5 +25,8 @@ namespace FileWarden.Cli.Options
 
         [Option('b', "backup", HelpText = "When 'true' it will create backup directory with the original directory. Default value is 'false'", Default = false)]
         public bool CreateBackup { get; set; }
+
+        [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory. Default value is 'false'", Default = false)]
+        public bool NoCleanup { get; set; }
     }
 }
