@@ -6,7 +6,14 @@ namespace FileWarden.Core.Rename.Builder
     {
         private RenameWardenOptions _options = new RenameWardenOptions();
 
-        public IWarden Build() => new RenameWarden(_options);
+        public IWarden Build()
+        {
+            var warden = new RenameWarden(_options);
+
+            Reset();
+
+            return warden;
+        }
 
         public IRenameWardenBuilder Recursive(bool recursive)
         {
