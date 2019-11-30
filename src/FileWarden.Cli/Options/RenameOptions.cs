@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 
 using FileWarden.Common.Mapping;
-using FileWarden.Core.Rename.Warden;
+using FileWarden.Core.Rename;
 
 namespace FileWarden.Cli.Options
 {

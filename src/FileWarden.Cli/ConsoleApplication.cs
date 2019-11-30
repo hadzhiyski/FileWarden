@@ -3,7 +3,7 @@
 using AutoMapper;
 
 using FileWarden.Cli.Options;
-using FileWarden.Core.Rename.Warden;
+using FileWarden.Core.Rename;
 
 using System;
 
