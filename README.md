@@ -24,11 +24,12 @@ Supported operations
   --version          Display version information.
 
 ## Examples
-<br/>
-`warden rename --source "C:\test" --suffix "_1" --recursive --backup`
-<br/>
-<br/>
-`warden rename --source "C:\test" --suffix "_1" -rb`
-<br/>
-<br/>
-`warden rename --source "C:\test" --suffix "_1" -rb --no-cleanup`
+```
+warden rename --source "C:\test" --suffix "_1" --recursive --backup
+```
+```
+warden rename --source "C:\test" --suffix "_1" -rb
+```
+```
+warden rename --source "C:\test" --suffix "_1" -rb --no-cleanup
+```
