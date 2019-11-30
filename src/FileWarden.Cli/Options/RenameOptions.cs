@@ -23,13 +23,13 @@ namespace FileWarden.Cli.Options
         //[Option("ignore", HelpText = "Ignore file name regex")]
         //public string IgnoreRegex { get; set; }
 
-        [Option('r', "recursive", HelpText = "When 'true' it will rename files only in top level directory, otherwise it will rename all inner files. Default value is 'false'", Default = false)]
+        [Option('r', "recursive", HelpText = "When 'true' it will rename files only in top level directory, otherwise it will rename all inner files", Default = false)]
         public bool Recursive { get; set; }
 
-        [Option('b', "backup", HelpText = "When 'true' it will create backup directory with the original directory. Default value is 'false'", Default = false)]
+        [Option('b', "backup", HelpText = "When 'true' it will create backup directory with the original directory", Default = false)]
         public bool CreateBackup { get; set; }
 
-        [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory. Default value is 'false'", Default = false)]
+        [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory", Default = false)]
         public bool NoCleanup { get; set; }
 
         public void RegisterMappings(IProfileExpression profile)
