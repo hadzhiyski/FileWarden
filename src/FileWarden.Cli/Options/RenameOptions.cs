@@ -32,6 +32,9 @@ namespace FileWarden.Cli.Options
         [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory", Default = false)]
         public bool NoCleanup { get; set; }
 
+        [Option('f', "force", HelpText = "When 'true' it will overwrite existing files with the same name after applying suffix / prefix", Default = false)]
+        public bool OverwriteExistingFiles { get; set; }
+
         public void RegisterMappings(IProfileExpression profile)
         {
             profile
