@@ -1,9 +1,11 @@
 ﻿using Autofac;
 
+using AutoMapper;
+
 using CommandLine;
 
 using FileWarden.Cli.Options;
-using FileWarden.Core.Rename.Builder;
+using FileWarden.Core.Rename.Warden;
 
 using System;
 
@@ -13,11 +15,13 @@ namespace FileWarden.Cli
     {
         private readonly string[] _args;
         private readonly IContainer _container;
+        private readonly IMapper _mapper;
 
         public ConsoleApplication(string[] args, IContainer container)
         {
             _args = args;
             _container = container;
+            _mapper = _container.Resolve<IMapper>();
         }
 
         public int Run()
@@ -29,18 +33,13 @@ namespace FileWarden.Cli
 
         private int ExecuteWithRenameOptions(RenameOptions opts)
         {
-            IRenameWardenBuilder renameWardenBuilder = _container.Resolve<IRenameWardenBuilder>();
+            var renameWarden = _container.Resolve<IRenameWarden>();
 
             try
             {
-                var warden = renameWardenBuilder
-                    .WithSource(opts.Source)
-                    .WithSuffix(opts.Suffix)
-                    .WithBackup(opts.CreateBackup)
-                    .Recursive(opts.Recursive)
-                    .Build();
+                var renameOptions = _mapper.Map<RenameOptions, RenameWardenOptions>(opts);
 
-                warden.Execute();
+                renameWarden.Execute(renameOptions);
 
                 return 0;
             }

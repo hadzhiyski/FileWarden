@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Cli", "FileWarde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWarden.Autofac", "FileWarden.Autofac\FileWarden.Autofac.csproj", "{21EC77DB-B462-4335-8661-3AD6BC6EEC55}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0047A6C3-35AE-48C0-BD23-FF064B6567F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C895662C-2633-4B85-8D63-B47D678AD07C} = {0047A6C3-35AE-48C0-BD23-FF064B6567F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B9EFA94-C7E6-4E67-A7B6-613D62E788A9}

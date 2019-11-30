@@ -1,6 +1,7 @@
 ﻿using Autofac;
 
-using FileWarden.Autofac.Rename;
+using FileWarden.Autofac.Core;
+using FileWarden.Autofac.Core.Rename;
 
 namespace FileWarden.Autofac.Cli
 {
@@ -10,6 +11,7 @@ namespace FileWarden.Autofac.Cli
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterModule<FileSystemModule>();
             builder.RegisterModule<RenameWardenModule>();
 
             return builder.Build();

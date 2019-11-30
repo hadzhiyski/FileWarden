@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="7.0.7" />
   </ItemGroup>
 
   <ItemGroup>
