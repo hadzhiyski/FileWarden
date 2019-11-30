@@ -6,5 +6,6 @@
         public string Suffix { get; set; }
         public bool Recursive { get; set; }
         public bool CreateBackup { get; set; }
+        public bool NoCleanup { get; set; }
     }
 }

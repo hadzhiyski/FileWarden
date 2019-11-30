@@ -15,6 +15,7 @@ namespace FileWarden.Autofac.Cli
 
             builder.RegisterModule<FileSystemModule>();
             builder.RegisterModule<RenameWardenModule>();
+            builder.RegisterModule<CommandsModule>();
             builder.RegisterModule(new MappingModule(executingAssembly));
 
             return builder.Build();
