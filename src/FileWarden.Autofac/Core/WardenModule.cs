@@ -2,6 +2,7 @@
 
 using FileWarden.Core.Backup;
 using FileWarden.Core.Rename;
+using FileWarden.Core.Rename.Suffix;
 
 namespace FileWarden.Autofac.Core
 {
@@ -11,6 +12,7 @@ namespace FileWarden.Autofac.Core
         {
             builder.RegisterType<RenameWarden>().As<IRenameWarden>().InstancePerDependency();
             builder.RegisterType<BackupWarden>().As<IBackupWarden>().InstancePerDependency();
+            builder.RegisterType<AppendSuffixWarden>().As<IAppendSuffixWarden>().InstancePerDependency();
         }
     }
 }

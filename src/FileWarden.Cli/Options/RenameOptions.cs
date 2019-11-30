@@ -1,12 +1,15 @@
-﻿using CommandLine;
+using AutoMapper;
 
+using CommandLine;
+
+using FileWarden.Common.Extensions;
 using FileWarden.Common.Mapping;
 using FileWarden.Core.Rename;
 
 namespace FileWarden.Cli.Options
 {
     [Verb("rename")]
-    public sealed class RenameOptions : IMapTo<RenameWardenOptions>
+    public sealed class RenameOptions : IMapTo<RenameWardenOptions>, IMapExplicitly
     {
         [Option("source", HelpText = "Source directory", Required = true)]
         public string Source { get; set; }
@@ -28,5 +31,12 @@ namespace FileWarden.Cli.Options
 
         [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory. Default value is 'false'", Default = false)]
         public bool NoCleanup { get; set; }
+
+        public void RegisterMappings(IProfileExpression profile)
+        {
+            profile
+                .CreateMap<RenameOptions, RenameWardenOptions>()
+                .ForCtorParam(nameof(RenameWardenOptions.Search).ToLower(), cfg => cfg.MapFrom(src => src.Recursive.ToSearchOption()));
+        }
     }
 }
