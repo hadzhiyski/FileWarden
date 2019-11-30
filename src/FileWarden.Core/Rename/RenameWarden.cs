@@ -1,18 +1,19 @@
-﻿using FileWarden.Core.Commands;
+﻿
+using FileWarden.Core.Backup;
 
 using System;
 using System.IO.Abstractions;
 
-namespace FileWarden.Core.Rename.Warden
+namespace FileWarden.Core.Rename
 {
     public class RenameWarden : IRenameWarden
     {
         public delegate RenameWarden Factory(IFileSystem fs);
 
         private readonly IFileSystem _fs;
-        private readonly IBackupCommand _backup;
+        private readonly IBackupWarden _backup;
 
-        public RenameWarden(IFileSystem fs, IBackupCommand backup)
+        public RenameWarden(IFileSystem fs, IBackupWarden backup)
         {
             _fs = fs;
             _backup = backup;
@@ -22,7 +23,7 @@ namespace FileWarden.Core.Rename.Warden
         {
             if (options.CreateBackup)
             {
-                _backup.Create(options.Source, options.Recursive);
+                _backup.Create(options);
             }
 
             try
@@ -31,7 +32,7 @@ namespace FileWarden.Core.Rename.Warden
             }
             catch (Exception)
             {
-                _backup.Restore(options.Source, options.Recursive);
+                _backup.Restore(options);
                 throw;
             }
             finally
