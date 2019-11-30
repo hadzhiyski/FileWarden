@@ -1,5 +1,6 @@
 ﻿
 using FileWarden.Core.Backup;
+using FileWarden.Core.Rename.Suffix;
 
 using System;
 using System.IO.Abstractions;
@@ -10,36 +11,36 @@ namespace FileWarden.Core.Rename
     {
         public delegate RenameWarden Factory(IFileSystem fs);
 
-        private readonly IFileSystem _fs;
-        private readonly IBackupWarden _backup;
+        private readonly IBackupWarden _backupWarden;
+        private readonly IAppendSuffixWarden _suffixWarden;
 
-        public RenameWarden(IFileSystem fs, IBackupWarden backup)
+        public RenameWarden(IBackupWarden backupWarden, IAppendSuffixWarden suffixWarden)
         {
-            _fs = fs;
-            _backup = backup;
+            _backupWarden = backupWarden;
+            _suffixWarden = suffixWarden;
         }
 
         public void Execute(RenameWardenOptions options)
         {
             if (options.CreateBackup)
             {
-                _backup.Create(options);
+                _backupWarden.Create(options);
             }
 
             try
             {
-
+                _suffixWarden.Execute(options);
             }
             catch (Exception)
             {
-                _backup.Restore(options);
+                _backupWarden.Restore(options);
                 throw;
             }
             finally
             {
                 if (!options.NoCleanup)
                 {
-                    _backup.Cleanup();
+                    _backupWarden.Cleanup();
                 }
             }
         }
