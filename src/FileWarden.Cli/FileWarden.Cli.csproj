@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <AssemblyName>warden</AssemblyName>
+    <AssemblyName>FileWarden.Cli</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

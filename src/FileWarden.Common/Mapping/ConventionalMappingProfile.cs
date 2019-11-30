@@ -16,7 +16,7 @@ namespace FileWarden.Common.Mapping
             var modelRegistrations = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
-                .Where(a => a.GetName().Name.StartsWith("FireWarden.") || a.GetName().Name == "warden")
+                .Where(a => a.GetName().Name.StartsWith("FileWarden."))
                 .SelectMany(a => a.GetExportedTypes())
                 .Where(t => t.IsClass && !t.IsAbstract)
                 .Select(t => new
