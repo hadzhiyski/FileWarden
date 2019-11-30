@@ -1,7 +1,8 @@
 ﻿namespace FileWarden.Core
 {
-    public interface IWarden
+    public interface IWarden<TOptions>
+        where TOptions : notnull
     {
-        void Execute();
+        void Execute(TOptions options);
     }
 }

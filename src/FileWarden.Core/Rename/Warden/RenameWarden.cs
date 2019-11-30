@@ -1,15 +1,19 @@
-﻿namespace FileWarden.Core.Rename.Warden
-{
-    public class RenameWarden : IWarden
-    {
-        private readonly RenameWardenOptions _options;
+﻿using System.IO.Abstractions;
 
-        public RenameWarden(RenameWardenOptions options)
+namespace FileWarden.Core.Rename.Warden
+{
+    public class RenameWarden : IRenameWarden
+    {
+        public delegate RenameWarden Factory(IFileSystem fs);
+
+        private readonly IFileSystem _fs;
+
+        public RenameWarden(IFileSystem fs)
         {
-            _options = options;
+            _fs = fs;
         }
 
-        public void Execute()
+        public void Execute(RenameWardenOptions options)
         {
             throw new System.NotImplementedException();
         }
