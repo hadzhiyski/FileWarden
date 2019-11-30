@@ -1,4 +1,7 @@
-﻿using FileWarden.Autofac.Cli;
+﻿using CommandLine;
+
+using FileWarden.Autofac.Cli;
+using FileWarden.Cli.Options;
 
 using System.Reflection;
 
@@ -12,7 +15,9 @@ namespace FileWarden.Cli
 
             var app = new ConsoleApplication(args, container);
 
-            return app.Run();
+            return Parser.Default.ParseArguments<RenameOptions>(args).MapResult(
+                (RenameOptions opts) => app.ExecuteWithRenameOptions(opts),
+                errs => 1);
         }
     }
 }
