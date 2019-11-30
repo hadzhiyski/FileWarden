@@ -19,6 +19,9 @@ Supported operations
 
   --no-cleanup       (Default: false) When 'true' it will not delete backup directory
 
+  -f, --force        (Default: false) When 'true' it will overwrite existing files with the same name after applying
+                     suffix / prefix
+
   --help             Display this help screen.
 
   --version          Display version information.
