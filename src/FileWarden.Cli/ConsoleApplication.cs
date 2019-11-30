@@ -45,7 +45,8 @@ namespace FileWarden.Cli
             }
             catch (Exception)
             {
-                return -1;
+                throw;
+                //return -1;
             }
         }
     }

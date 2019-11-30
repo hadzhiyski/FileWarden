@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Core", "FileWard
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Cli", "FileWarden.Cli\FileWarden.Cli.csproj", "{286F573E-0FD8-49AE-9CDF-8E3356281E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWarden.Autofac", "FileWarden.Autofac\FileWarden.Autofac.csproj", "{21EC77DB-B462-4335-8661-3AD6BC6EEC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Autofac", "FileWarden.Autofac\FileWarden.Autofac.csproj", "{21EC77DB-B462-4335-8661-3AD6BC6EEC55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0047A6C3-35AE-48C0-BD23-FF064B6567F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWarden.Common", "FileWarden.Common\FileWarden.Common.csproj", "{99326920-AB2E-46AB-AA8F-CE8C64D3739E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{21EC77DB-B462-4335-8661-3AD6BC6EEC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21EC77DB-B462-4335-8661-3AD6BC6EEC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21EC77DB-B462-4335-8661-3AD6BC6EEC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

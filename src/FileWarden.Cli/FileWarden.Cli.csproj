@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FileWarden.Autofac\FileWarden.Autofac.csproj" />
+    <ProjectReference Include="..\FileWarden.Common\FileWarden.Common.csproj" />
     <ProjectReference Include="..\FileWarden.Core\FileWarden.Core.csproj" />
   </ItemGroup>
 

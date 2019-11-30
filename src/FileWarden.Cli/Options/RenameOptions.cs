@@ -1,9 +1,12 @@
 ﻿using CommandLine;
 
+using FileWarden.Common.Mapping;
+using FileWarden.Core.Rename.Warden;
+
 namespace FileWarden.Cli.Options
 {
     [Verb("rename")]
-    public sealed class RenameOptions
+    public sealed class RenameOptions : IMapTo<RenameWardenOptions>
     {
         [Option("source", HelpText = "Source directory", Required = true)]
         public string Source { get; set; }
