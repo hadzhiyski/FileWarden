@@ -1,9 +1,4 @@
-﻿using CommandLine;
-
-using FileWarden.Cli.Options;
-using FileWarden.Core.Rename.Builder;
-
-using System;
+﻿using FileWarden.Autofac.Cli;
 
 namespace FileWarden.Cli
 {
@@ -11,32 +6,11 @@ namespace FileWarden.Cli
     {
         static int Main(string[] args)
         {
-            return Parser.Default.ParseArguments<RenameOptions>(args).MapResult(
-                (RenameOptions opts) => ExecuteWithRenameOptions(opts),
-                errs => 1);
-        }
+            var container = new FileWardenCliContainerFactory().Build();
 
-        private static int ExecuteWithRenameOptions(RenameOptions opts)
-        {
-            IRenameWardenBuilder renameWardenBuilder = new RenameWardenBuilder();
+            var app = new ConsoleApplication(args, container);
 
-            try
-            {
-                var warden = renameWardenBuilder
-                    .WithSource(opts.Source)
-                    .WithSuffix(opts.Suffix)
-                    .WithBackup(opts.CreateBackup)
-                    .Recursive(opts.Recursive)
-                    .Build();
-
-                warden.Execute();
-
-                return 0;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
+            return app.Run();
         }
     }
 }
