@@ -2,8 +2,6 @@
 
 using AutoMapper;
 
-using CommandLine;
-
 using FileWarden.Cli.Options;
 using FileWarden.Core.Rename.Warden;
 
@@ -24,14 +22,7 @@ namespace FileWarden.Cli
             _mapper = _container.Resolve<IMapper>();
         }
 
-        public int Run()
-        {
-            return Parser.Default.ParseArguments<RenameOptions>(_args).MapResult(
-                (RenameOptions opts) => ExecuteWithRenameOptions(opts),
-                errs => 1);
-        }
-
-        private int ExecuteWithRenameOptions(RenameOptions opts)
+        public int ExecuteWithRenameOptions(RenameOptions opts)
         {
             var renameWarden = _container.Resolve<IRenameWarden>();
 
