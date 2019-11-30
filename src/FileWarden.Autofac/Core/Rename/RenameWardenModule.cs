@@ -10,7 +10,7 @@ namespace FileWarden.Autofac.Core.Rename
         {
             base.Load(builder);
 
-            builder.RegisterType<RenameWarden>();
+            builder.RegisterType<RenameWarden>().As<IRenameWarden>().InstancePerDependency();
         }
     }
 }
