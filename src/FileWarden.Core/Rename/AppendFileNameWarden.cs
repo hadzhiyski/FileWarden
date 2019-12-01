@@ -2,18 +2,23 @@
 using System.IO.Abstractions;
 using System.Linq;
 
-namespace FileWarden.Core.Rename.Suffix
+namespace FileWarden.Core.Rename
 {
-    public class AppendSuffixWarden : IAppendSuffixWarden
+    public class AppendFileNameWarden : IAppendFileNameWarden
     {
         private readonly IFileSystem _fs;
+        private readonly IAppendFileNameStrategy _appendFileNameStrategy;
 
-        public AppendSuffixWarden(IFileSystem fs)
+        public AppendFileNameWarden(IFileSystem fs, IAppendFileNameStrategy appendFileNameStrategy)
         {
             _fs = fs;
+            _appendFileNameStrategy = appendFileNameStrategy;
         }
 
-        public void Execute(IAppendSuffixWardenOptions options)
+        public bool CanExecute(RenameWardenOptions options) =>
+            _appendFileNameStrategy.CanExecute(options);
+
+        public void Execute(IAppendFileNameWardenOptions options)
         {
             var files = _fs.DirectoryInfo
                 .FromDirectoryName(options.Source)
@@ -33,7 +38,7 @@ namespace FileWarden.Core.Rename.Suffix
                 var fileNameWithoutExtension = _fs.Path.GetFileNameWithoutExtension(file.Name);
                 var fileExtension = _fs.Path.GetExtension(file.Name);
 
-                var fileNameWithSuffix = $"{fileNameWithoutExtension}{options.Suffix}{fileExtension}";
+                var fileNameWithSuffix = _appendFileNameStrategy.FormatFileName(fileNameWithoutExtension, fileExtension, options);
 
                 var fileNameWithSuffixPath = _fs.Path.Combine(fileDirectory, fileNameWithSuffix);
                 var fileNameWithSuffixInfo = _fs.FileInfo.FromFileName(fileNameWithSuffixPath);
