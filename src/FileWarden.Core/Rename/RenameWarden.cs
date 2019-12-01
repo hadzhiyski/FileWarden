@@ -1,6 +1,5 @@
 ﻿
 using FileWarden.Core.Backup;
-using FileWarden.Core.Rename.Suffix;
 
 using System;
 using System.IO.Abstractions;
@@ -12,12 +11,14 @@ namespace FileWarden.Core.Rename
         public delegate RenameWarden Factory(IFileSystem fs);
 
         private readonly IBackupWarden _backupWarden;
-        private readonly IAppendSuffixWarden _suffixWarden;
+        private readonly IAppendFileNameWarden _suffixWarden;
+        private readonly IAppendFileNameWarden _prefixWarden;
 
-        public RenameWarden(IBackupWarden backupWarden, IAppendSuffixWarden suffixWarden)
+        public RenameWarden(IBackupWarden backupWarden, IAppendFileNameWarden suffixWarden, IAppendFileNameWarden prefixWarden)
         {
             _backupWarden = backupWarden;
             _suffixWarden = suffixWarden;
+            _prefixWarden = prefixWarden;
         }
 
         public void Execute(RenameWardenOptions options)
@@ -29,7 +30,15 @@ namespace FileWarden.Core.Rename
 
             try
             {
-                _suffixWarden.Execute(options);
+                if (_suffixWarden.CanExecute(options))
+                {
+                    _suffixWarden.Execute(options);
+                }
+
+                if (_prefixWarden.CanExecute(options))
+                {
+                    _prefixWarden.Execute(options);
+                }
             }
             catch (Exception)
             {
