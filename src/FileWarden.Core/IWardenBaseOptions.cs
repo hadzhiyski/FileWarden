@@ -6,6 +6,5 @@ namespace FileWarden.Core
     {
         string Source { get; }
         SearchOption Search { get; }
-        string Backup { get; }
     }
 }

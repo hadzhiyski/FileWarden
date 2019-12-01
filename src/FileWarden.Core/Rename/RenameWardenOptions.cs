@@ -1,9 +1,11 @@
 ﻿
+using FileWarden.Core.Backup;
+
 using System.IO;
 
 namespace FileWarden.Core.Rename
 {
-    public class RenameWardenOptions : IWardenBaseOptions, IAppendFileNameWardenOptions
+    public class RenameWardenOptions : IWardenBaseOptions, IAppendFileNameWardenOptions, IBackupWardenOptions
     {
         public RenameWardenOptions(string source, SearchOption search, string suffix, string prefix, string backup, bool noBackup, bool noCleanup, bool overwriteExistingFiles)
         {
@@ -22,8 +24,8 @@ namespace FileWarden.Core.Rename
         public string Suffix { get; }
         public string Prefix { get; }
         public string Backup { get; }
-        public bool NoBackup { get; set; }
+        public bool NoBackup { get; }
         public bool NoCleanup { get; }
-        public bool OverwriteExistingFiles { get; set; }
+        public bool OverwriteExistingFiles { get; }
     }
 }

@@ -1,11 +1,11 @@
 ﻿namespace FileWarden.Core.Backup
 {
-    public interface IBackupWarden : IWarden<IWardenBaseOptions>
+    public interface IBackupWarden : IWarden<IBackupWardenOptions>
     {
-        void Create(IWardenBaseOptions opts);
+        void Create(IBackupWardenOptions opts);
 
-        void Restore(IWardenBaseOptions opts);
+        void Restore(IBackupWardenOptions opts);
 
-        void Cleanup(IWardenBaseOptions opts);
+        void Cleanup(IBackupWardenOptions opts);
     }
 }

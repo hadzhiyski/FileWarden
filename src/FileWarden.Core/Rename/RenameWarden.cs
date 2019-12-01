@@ -2,14 +2,11 @@
 using FileWarden.Core.Backup;
 
 using System;
-using System.IO.Abstractions;
 
 namespace FileWarden.Core.Rename
 {
     public class RenameWarden : IRenameWarden
     {
-        public delegate RenameWarden Factory(IFileSystem fs);
-
         private readonly IBackupWarden _backupWarden;
         private readonly IAppendFileNameWarden _suffixWarden;
         private readonly IAppendFileNameWarden _prefixWarden;

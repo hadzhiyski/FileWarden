@@ -4,6 +4,6 @@
     {
         string Suffix { get; }
         string Prefix { get; }
-        bool OverwriteExistingFiles { get; set; }
+        bool OverwriteExistingFiles { get; }
     }
 }
