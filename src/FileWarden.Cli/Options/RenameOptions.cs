@@ -14,10 +14,10 @@ namespace FileWarden.Cli.Options
         [Option("source", HelpText = "Source directory", Required = true)]
         public string Source { get; set; }
 
-        [Option("prefix", HelpText = "Prefix to append to file name", SetName = "prefix", Required = true)]
+        [Option("prefix", HelpText = "Prefix to append to file name")]
         public string Prefix { get; set; }
 
-        [Option("suffix", HelpText = "Suffix to append to file name", SetName = "suffix", Required = true)]
+        [Option("suffix", HelpText = "Suffix to append to file name")]
         public string Suffix { get; set; }
 
         [Option('r', "recursive", HelpText = "When 'true' it will rename files only in top level directory, otherwise it will rename all inner files", Default = false)]
