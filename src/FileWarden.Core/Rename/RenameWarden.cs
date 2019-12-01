@@ -23,7 +23,7 @@ namespace FileWarden.Core.Rename
 
         public void Execute(RenameWardenOptions options)
         {
-            if (options.CreateBackup)
+            if (!options.NoBackup)
             {
                 _backupWarden.Create(options);
             }
@@ -42,14 +42,17 @@ namespace FileWarden.Core.Rename
             }
             catch (Exception)
             {
-                _backupWarden.Restore(options);
+                if (!options.NoBackup)
+                {
+                    _backupWarden.Restore(options);
+                }
                 throw;
             }
             finally
             {
                 if (!options.NoCleanup)
                 {
-                    _backupWarden.Cleanup();
+                    _backupWarden.Cleanup(options);
                 }
             }
         }

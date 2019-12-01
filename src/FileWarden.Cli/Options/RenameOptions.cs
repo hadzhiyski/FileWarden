@@ -23,8 +23,11 @@ namespace FileWarden.Cli.Options
         [Option('r', "recursive", HelpText = "When 'true' it will rename files only in top level directory, otherwise it will rename all inner files", Default = false)]
         public bool Recursive { get; set; }
 
-        [Option('b', "backup", HelpText = "When 'true' it will create backup directory with the original directory", Default = false)]
-        public bool CreateBackup { get; set; }
+        [Option("backup", HelpText = "Backup directory path. Default location is %temp%")]
+        public string Backup { get; set; } = System.IO.Path.GetTempPath();
+
+        [Option("no-backup", HelpText = "When 'true' it will not create backup directory", Default = false)]
+        public bool NoBackup { get; set; }
 
         [Option("no-cleanup", HelpText = "When 'true' it will not delete backup directory", Default = false)]
         public bool NoCleanup { get; set; }

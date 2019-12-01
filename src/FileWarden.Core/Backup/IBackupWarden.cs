@@ -6,6 +6,6 @@
 
         void Restore(IWardenBaseOptions opts);
 
-        void Cleanup();
+        void Cleanup(IWardenBaseOptions opts);
     }
 }

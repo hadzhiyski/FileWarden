@@ -7,26 +7,28 @@ namespace FileWarden.Core.Backup
     public class BackupWarden : IBackupWarden
     {
         private readonly IFileSystem _fs;
-        private readonly string _rootBackupDirectoryPath;
         public BackupWarden(IFileSystem fs)
         {
             _fs = fs;
-            _rootBackupDirectoryPath = _fs.Path.Combine(Path.GetTempPath(), "warden");
         }
 
-        public void Cleanup()
+        public void Cleanup(IWardenBaseOptions opts)
         {
-            if (GetRootBackupDirectory().Exists)
+            var backupDirectoryPath = opts.Backup;
+
+            if (GetRootBackupDirectory(backupDirectoryPath).Exists)
             {
-                GetRootBackupDirectory().Delete(true);
+                GetRootBackupDirectory(backupDirectoryPath).Delete(true);
             }
         }
 
         public void Create(IWardenBaseOptions opts)
         {
-            Cleanup();
+            Cleanup(opts);
 
-            GetRootBackupDirectory().Create();
+            var backupDirectoryPath = opts.Backup;
+
+            GetRootBackupDirectory(backupDirectoryPath).Create();
 
             var directory = _fs.DirectoryInfo.FromDirectoryName(opts.Source);
 
@@ -42,7 +44,7 @@ namespace FileWarden.Core.Backup
 
             foreach (var file in filesToBackup)
             {
-                var fileBackupDirectoryInfo = _fs.DirectoryInfo.FromDirectoryName(file.DirectoryName.Replace(opts.Source, GetRootBackupDirectory().FullName));
+                var fileBackupDirectoryInfo = _fs.DirectoryInfo.FromDirectoryName(file.DirectoryName.Replace(opts.Source, GetRootBackupDirectory(backupDirectoryPath).FullName));
                 if (!fileBackupDirectoryInfo.Exists)
                 {
                     fileBackupDirectoryInfo.Create();
@@ -57,14 +59,16 @@ namespace FileWarden.Core.Backup
 
         public void Restore(IWardenBaseOptions opts)
         {
+            var backupDirectoryPath = opts.Backup;
+
             var filesToRestore = _fs.DirectoryInfo
-               .FromDirectoryName(GetRootBackupDirectory().FullName)
+               .FromDirectoryName(GetRootBackupDirectory(backupDirectoryPath).FullName)
                .EnumerateFiles("*", opts.Search)
                .ToList();
 
             foreach (var file in filesToRestore)
             {
-                var fileDirectoryInfo = _fs.DirectoryInfo.FromDirectoryName(file.DirectoryName.Replace(GetRootBackupDirectory().FullName, opts.Source));
+                var fileDirectoryInfo = _fs.DirectoryInfo.FromDirectoryName(file.DirectoryName.Replace(GetRootBackupDirectory(backupDirectoryPath).FullName, opts.Source));
                 if (!fileDirectoryInfo.Exists)
                 {
                     fileDirectoryInfo.Create();
@@ -75,6 +79,6 @@ namespace FileWarden.Core.Backup
             }
         }
 
-        private IDirectoryInfo GetRootBackupDirectory() => _fs.DirectoryInfo.FromDirectoryName(_rootBackupDirectoryPath);
+        private IDirectoryInfo GetRootBackupDirectory(string backupDirectoryPath) => _fs.DirectoryInfo.FromDirectoryName(backupDirectoryPath);
     }
 }
