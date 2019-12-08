@@ -11,6 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Autofac", "FileW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Common", "FileWarden.Common\FileWarden.Common.csproj", "{99326920-AB2E-46AB-AA8F-CE8C64D3739E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{57C37C8F-8877-4191-82B8-5F266EF4C91F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "commandline", "commandline", "{8CC2A216-CF97-4318-8685-357B155BE936}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLine", "..\lib\commandline\src\CommandLine\CommandLine.csproj", "{7C4C7252-AB3A-4A99-8C78-845979AA07B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +39,17 @@ Global
 		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99326920-AB2E-46AB-AA8F-CE8C64D3739E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4C7252-AB3A-4A99-8C78-845979AA07B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4C7252-AB3A-4A99-8C78-845979AA07B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4C7252-AB3A-4A99-8C78-845979AA07B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4C7252-AB3A-4A99-8C78-845979AA07B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8CC2A216-CF97-4318-8685-357B155BE936} = {57C37C8F-8877-4191-82B8-5F266EF4C91F}
+		{7C4C7252-AB3A-4A99-8C78-845979AA07B2} = {8CC2A216-CF97-4318-8685-357B155BE936}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B9EFA94-C7E6-4E67-A7B6-613D62E788A9}

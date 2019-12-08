@@ -1,0 +1,4 @@
+[submodule "lib/commandline"]
+	path = lib/commandline
+	url = https://github.com/hadzhiyski/commandline.git
+	branch = feature/group-options
