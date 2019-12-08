@@ -1,6 +1,6 @@
 ﻿namespace FileWarden.Core.Rename.Suffix
 {
-    public class AppendFileNameSuffixStrategy : IAppendFileNameStrategy
+    public class AppendFileNameSuffixFormatter : AppendFileNameBaseFormatter, IAppendFileNameStrategy
     {
         public bool CanExecute(RenameWardenOptions options) =>
             !string.IsNullOrWhiteSpace(options.Suffix);

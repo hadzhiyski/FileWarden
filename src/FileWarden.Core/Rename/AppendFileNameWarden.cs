@@ -7,16 +7,16 @@ namespace FileWarden.Core.Rename
     public class AppendFileNameWarden : IAppendFileNameWarden
     {
         private readonly IFileSystem _fs;
-        private readonly IAppendFileNameStrategy _appendFileNameStrategy;
+        private readonly IAppendFileNameStrategy _appendFileNameFormatter;
 
-        public AppendFileNameWarden(IFileSystem fs, IAppendFileNameStrategy appendFileNameStrategy)
+        public AppendFileNameWarden(IFileSystem fs, IAppendFileNameStrategy appendFileNameFormatter)
         {
             _fs = fs;
-            _appendFileNameStrategy = appendFileNameStrategy;
+            _appendFileNameFormatter = appendFileNameFormatter;
         }
 
         public bool CanExecute(RenameWardenOptions options) =>
-            _appendFileNameStrategy.CanExecute(options);
+            _appendFileNameFormatter.CanExecute(options);
 
         public void Execute(IAppendFileNameWardenOptions options)
         {
@@ -38,7 +38,7 @@ namespace FileWarden.Core.Rename
                 var fileNameWithoutExtension = _fs.Path.GetFileNameWithoutExtension(file.Name);
                 var fileExtension = _fs.Path.GetExtension(file.Name);
 
-                var fileNameWithSuffix = _appendFileNameStrategy.FormatFileName(fileNameWithoutExtension, fileExtension, options);
+                var fileNameWithSuffix = _appendFileNameFormatter.FormatFileName(fileNameWithoutExtension, fileExtension, options);
 
                 var fileNameWithSuffixPath = _fs.Path.Combine(fileDirectory, fileNameWithSuffix);
                 var fileNameWithSuffixInfo = _fs.FileInfo.FromFileName(fileNameWithSuffixPath);

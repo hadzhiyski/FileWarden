@@ -1,6 +1,6 @@
 ﻿namespace FileWarden.Core.Rename.Prefix
 {
-    public class AppendFileNamePrefixStrategy : IAppendFileNameStrategy
+    public class AppendFileNamePrefixFormatter : AppendFileNameBaseFormatter, IAppendFileNameStrategy
     {
         public bool CanExecute(RenameWardenOptions options) =>
             !string.IsNullOrWhiteSpace(options.Prefix);
