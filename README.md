@@ -10,12 +10,16 @@ Supported operations
 
   --source           Required. Source directory
 
-  --suffix           Required. Suffix to append to file name
+  --prefix           (Group: rename-append) Prefix to append to file name
+
+  --suffix           (Group: rename-append) Suffix to append to file name
 
   -r, --recursive    (Default: false) When 'true' it will rename files only in top level directory, otherwise it will
                      rename all inner files
 
-  -b, --backup       (Default: false) When 'true' it will create backup directory with the original directory
+  --backup           Backup directory path. Default location is %temp%
+
+  --no-backup        (Default: false) When 'true' it will not create backup directory
 
   --no-cleanup       (Default: false) When 'true' it will not delete backup directory
 
