@@ -1,8 +1,8 @@
-﻿using Autofac;
-
+﻿
 using AutoMapper;
 
 using FileWarden.Cli.Options;
+using FileWarden.Core;
 using FileWarden.Core.Rename;
 
 using System;
@@ -11,26 +11,22 @@ namespace FileWarden.Cli
 {
     internal class ConsoleApplication
     {
-        private readonly string[] _args;
-        private readonly IContainer _container;
+        private readonly IWardenContext _ctx;
         private readonly IMapper _mapper;
 
-        public ConsoleApplication(string[] args, IContainer container)
+        public ConsoleApplication(IMapper mapper, IWardenFactory wardenFactory)
         {
-            _args = args;
-            _container = container;
-            _mapper = _container.Resolve<IMapper>();
+            _mapper = mapper;
+            _ctx = new WardenContext(wardenFactory);
         }
 
         public int ExecuteWithRenameOptions(RenameOptions opts)
         {
-            var renameWarden = _container.Resolve<IRenameWarden>();
-
             try
             {
                 var renameOptions = _mapper.Map<RenameOptions, RenameWardenOptions>(opts);
 
-                renameWarden.Execute(renameOptions);
+                _ctx.Rename(renameOptions);
 
                 return 0;
             }

@@ -5,5 +5,7 @@
         string Backup { get; }
 
         bool NoBackup { get; }
+
+        bool NoCleanup { get; }
     }
 }

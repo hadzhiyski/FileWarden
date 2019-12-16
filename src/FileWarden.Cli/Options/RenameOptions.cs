@@ -6,6 +6,8 @@ using FileWarden.Common.Extensions;
 using FileWarden.Common.Mapping;
 using FileWarden.Core.Rename;
 
+using System.IO;
+
 namespace FileWarden.Cli.Options
 {
     [Verb("rename")]
@@ -24,7 +26,7 @@ namespace FileWarden.Cli.Options
         public bool Recursive { get; set; }
 
         [Option("backup", HelpText = "Backup directory path. Default location is %temp%")]
-        public string Backup { get; set; } = System.IO.Path.GetTempPath();
+        public string Backup { get; set; } = Path.Join(Path.GetTempPath(), Constants.ApplicationName);
 
         [Option("no-backup", HelpText = "When 'true' it will not create backup directory", Default = false)]
         public bool NoBackup { get; set; }

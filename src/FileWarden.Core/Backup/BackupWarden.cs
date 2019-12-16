@@ -22,7 +22,7 @@ namespace FileWarden.Core.Backup
             }
         }
 
-        public void Create(IBackupWardenOptions opts)
+        public void Execute(IBackupWardenOptions opts)
         {
             Cleanup(opts);
 
@@ -55,9 +55,7 @@ namespace FileWarden.Core.Backup
             }
         }
 
-        public void Execute(IBackupWardenOptions options) => Create(options);
-
-        public void Restore(IBackupWardenOptions opts)
+        public void Rollback(IBackupWardenOptions opts)
         {
             var backupDirectoryPath = opts.Backup;
 

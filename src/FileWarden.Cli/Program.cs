@@ -1,6 +1,11 @@
-﻿using CommandLine;
+﻿using Autofac;
+
+using AutoMapper;
+
+using CommandLine;
 
 using FileWarden.Autofac.Cli;
+using FileWarden.Autofac.Core;
 using FileWarden.Cli.Options;
 
 using System.Reflection;
@@ -13,7 +18,9 @@ namespace FileWarden.Cli
         {
             var container = new FileWardenCliContainerFactory().Build(Assembly.GetExecutingAssembly());
 
-            var app = new ConsoleApplication(args, container);
+            var mapper = container.Resolve<IMapper>();
+
+            var app = new ConsoleApplication(mapper, new AutofacWardenFactory(container));
 
             return Parser.Default.ParseArguments<RenameOptions>(args).MapResult(
                 (RenameOptions opts) => app.ExecuteWithRenameOptions(opts),
