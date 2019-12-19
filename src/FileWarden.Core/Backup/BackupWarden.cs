@@ -14,6 +14,8 @@ namespace FileWarden.Core.Backup
 
         public void Cleanup(IBackupWardenOptions opts)
         {
+            if (opts.NoCleanup) return;
+
             var backupDirectoryPath = opts.Backup;
 
             if (GetRootBackupDirectory(backupDirectoryPath).Exists)
@@ -24,6 +26,8 @@ namespace FileWarden.Core.Backup
 
         public void Execute(IBackupWardenOptions opts)
         {
+            if (opts.NoBackup) return;
+
             Cleanup(opts);
 
             var backupDirectoryPath = opts.Backup;
