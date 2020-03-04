@@ -118,6 +118,7 @@ namespace FileWarden.Tests.Core
             _backup.Execute(opts);
 
             _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == backupPath)), Times.AtLeastOnce);
+            _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == sourcePath)), Times.AtLeastOnce);
             backupDirectoryMock.Verify(m => m.Delete(It.IsAny<bool>()), Times.Once);
         }
 
@@ -147,6 +148,7 @@ namespace FileWarden.Tests.Core
             Assert.Throws<DirectoryNotFoundException>(() => _backup.Execute(opts));
 
             _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == backupPath)), Times.AtLeastOnce);
+            _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == sourcePath)), Times.Once);
             backupDirectoryMock.Verify(m => m.Delete(It.IsAny<bool>()), Times.Once);
         }
     }
