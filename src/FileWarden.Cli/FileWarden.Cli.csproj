@@ -9,10 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="CommandLineParser" Version="2.7.82" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\commandline\src\CommandLine\CommandLine.csproj" />
     <ProjectReference Include="..\FileWarden.Autofac\FileWarden.Autofac.csproj" />
     <ProjectReference Include="..\FileWarden.Common\FileWarden.Common.csproj" />
     <ProjectReference Include="..\FileWarden.Core\FileWarden.Core.csproj" />
