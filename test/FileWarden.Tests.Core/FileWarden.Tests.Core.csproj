@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>FileWarden.Tests.Core</AssemblyName>
+
+    <RootNamespace>FileWarden.Tests.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\FileWarden.Core\FileWarden.Core.csproj" />
+    <ProjectReference Include="..\FileWarden.Tests.Common\FileWarden.Tests.Common.csproj" />
   </ItemGroup>
 
 </Project>

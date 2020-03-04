@@ -1,6 +1,7 @@
 using File.Warden.Tests.Core.Fakes;
 
 using FileWarden.Core.Backup;
+using FileWarden.Tests.Common;
 
 using Moq;
 
@@ -42,7 +43,7 @@ namespace File.Warden.Tests.Core
             _backup.Cleanup(opts);
 
             _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == nonExistingBackupPath)), exists ? Times.Exactly(2) : Times.Once());
-            backupDirectoryMock.Verify(m => m.Delete(It.Is<bool>(c => c == true)), exists ? Times.Once() : Times.Never());
+            backupDirectoryMock.Verify(m => m.Delete(It.Is<bool>(c => c == true)), exists.OnceOrNever());
             backupDirectoryMock.VerifyGet(p => p.Exists, Times.Once);
         }
 
@@ -67,7 +68,7 @@ namespace File.Warden.Tests.Core
 
             _backup.Cleanup(opts);
 
-            _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == backupPath)), noCleanup ? Times.Never() : Times.Once());
+            _fsMock.DirectoryInfo.Verify(m => m.FromDirectoryName(It.Is<string>(c => c == backupPath)), noCleanup.NeverOrOnce());
             backupDirectoryMock.Verify(m => m.Delete(It.IsAny<bool>()), Times.Never);
         }
     }

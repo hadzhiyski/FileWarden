@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Common", "FileWa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3B2B55CC-3A24-4D83-BA35-01D88534EFA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "File.Warden.Tests.Core", "..\test\File.Warden.Tests.Core\File.Warden.Tests.Core.csproj", "{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWarden.Tests.Core", "..\test\FileWarden.Tests.Core\FileWarden.Tests.Core.csproj", "{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWarden.Tests.Common", "..\test\FileWarden.Tests.Common\FileWarden.Tests.Common.csproj", "{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,17 @@ Global
 		{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{104A3A4E-7651-4CBF-A37A-78B6D0CBD8EF} = {3B2B55CC-3A24-4D83-BA35-01D88534EFA3}
+		{94D89D86-8D0F-4EDF-BA98-4B212C3E4CF1} = {3B2B55CC-3A24-4D83-BA35-01D88534EFA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B9EFA94-C7E6-4E67-A7B6-613D62E788A9}
